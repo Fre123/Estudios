@@ -65,6 +65,8 @@ class EstudianteController extends Controller
     {
         $model = new Estudiante();
 
+
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->CODIGO]);
         } else {
@@ -72,6 +74,7 @@ class EstudianteController extends Controller
                 'model' => $model,
             ]);
         }
+
     }
 
     /**
@@ -105,7 +108,6 @@ class EstudianteController extends Controller
 
         return $this->redirect(['index']);
     }
-
     /**
      * Finds the Estudiante model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

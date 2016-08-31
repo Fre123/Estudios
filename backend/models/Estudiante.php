@@ -8,12 +8,13 @@ use Yii;
  * This is the model class for table "estudiante".
  *
  * @property string $CODIGO
+ * @property string $CODIGO_MATERIA
  * @property string $NOMBRE
  * @property string $APELLIDO
  * @property string $CIUDAD
  * @property integer $EDAD
  *
- * @property Materia[] $materias
+ * @property Materia $cODIGOMATERIA
  */
 class Estudiante extends \yii\db\ActiveRecord
 {
@@ -32,9 +33,10 @@ class Estudiante extends \yii\db\ActiveRecord
     {
         return [
             [['CODIGO'], 'required'],
-            [['EDAD'], 'integer'],
+            ['EDAD', 'match','pattern' => '/[^abc]$/',  'message' => 'Solo numeros enteros positivos'],
             [['CODIGO'], 'string', 'max' => 50],
-            [['NOMBRE', 'APELLIDO', 'CIUDAD'], 'string', 'max' => 40],
+            [['CODIGO_MATERIA', 'NOMBRE', 'APELLIDO', 'CIUDAD'], 'string', 'max' => 40],
+            [['CODIGO_MATERIA'], 'exist', 'skipOnError' => true, 'targetClass' => Materia::className(), 'targetAttribute' => ['CODIGO_MATERIA' => 'CODIGO_MATERIA']],
         ];
     }
 
@@ -45,6 +47,7 @@ class Estudiante extends \yii\db\ActiveRecord
     {
         return [
             'CODIGO' => 'Codigo',
+            'CODIGO_MATERIA' => 'Codigo  Materia',
             'NOMBRE' => 'Nombre',
             'APELLIDO' => 'Apellido',
             'CIUDAD' => 'Ciudad',
@@ -55,8 +58,8 @@ class Estudiante extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getMaterias()
+    public function getCODIGOMATERIA()
     {
-        return $this->hasMany(Materia::className(), ['CODIGO' => 'CODIGO']);
+        return $this->hasOne(Materia::className(), ['CODIGO_MATERIA' => 'CODIGO_MATERIA']);
     }
 }

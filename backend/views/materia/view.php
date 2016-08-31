@@ -29,7 +29,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'CODIGO_MATERIA',
-            'CODIGO',
             'DESCRIPCION',
         ],
     ]) ?>

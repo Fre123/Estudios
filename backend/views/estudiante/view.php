@@ -29,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'CODIGO',
+            'CODIGO_MATERIA',
             'NOMBRE',
             'APELLIDO',
             'CIUDAD',

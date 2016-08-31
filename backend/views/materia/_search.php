@@ -17,8 +17,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'CODIGO_MATERIA') ?>
 
-    <?= $form->field($model, 'CODIGO') ?>
-
     <?= $form->field($model, 'DESCRIPCION') ?>
 
     <div class="form-group">

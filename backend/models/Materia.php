@@ -8,10 +8,9 @@ use Yii;
  * This is the model class for table "materia".
  *
  * @property string $CODIGO_MATERIA
- * @property string $CODIGO
  * @property string $DESCRIPCION
  *
- * @property Estudiante $cODIGO
+ * @property Estudiante[] $estudiantes
  */
 class Materia extends \yii\db\ActiveRecord
 {
@@ -31,8 +30,6 @@ class Materia extends \yii\db\ActiveRecord
         return [
             [['CODIGO_MATERIA'], 'required'],
             [['CODIGO_MATERIA', 'DESCRIPCION'], 'string', 'max' => 40],
-            [['CODIGO'], 'string', 'max' => 50],
-            [['CODIGO'], 'exist', 'skipOnError' => true, 'targetClass' => Estudiante::className(), 'targetAttribute' => ['CODIGO' => 'CODIGO']],
         ];
     }
 
@@ -43,7 +40,6 @@ class Materia extends \yii\db\ActiveRecord
     {
         return [
             'CODIGO_MATERIA' => 'Codigo  Materia',
-            'CODIGO' => 'Codigo',
             'DESCRIPCION' => 'Descripcion',
         ];
     }
@@ -51,8 +47,8 @@ class Materia extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCODIGO()
+    public function getEstudiantes()
     {
-        return $this->hasOne(Estudiante::className(), ['CODIGO' => 'CODIGO']);
+        return $this->hasMany(Estudiante::className(), ['CODIGO_MATERIA' => 'CODIGO_MATERIA']);
     }
 }

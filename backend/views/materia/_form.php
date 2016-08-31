@@ -14,8 +14,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'CODIGO_MATERIA')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'CODIGO')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'DESCRIPCION')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">

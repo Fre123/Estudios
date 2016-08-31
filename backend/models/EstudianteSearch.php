@@ -18,7 +18,7 @@ class EstudianteSearch extends Estudiante
     public function rules()
     {
         return [
-            [['CODIGO', 'NOMBRE', 'APELLIDO', 'CIUDAD'], 'safe'],
+            [['CODIGO', 'CODIGO_MATERIA', 'NOMBRE', 'APELLIDO', 'CIUDAD'], 'safe'],
             [['EDAD'], 'integer'],
         ];
     }
@@ -63,6 +63,7 @@ class EstudianteSearch extends Estudiante
         ]);
 
         $query->andFilterWhere(['like', 'CODIGO', $this->CODIGO])
+            ->andFilterWhere(['like', 'CODIGO_MATERIA', $this->CODIGO_MATERIA])
             ->andFilterWhere(['like', 'NOMBRE', $this->NOMBRE])
             ->andFilterWhere(['like', 'APELLIDO', $this->APELLIDO])
             ->andFilterWhere(['like', 'CIUDAD', $this->CIUDAD]);

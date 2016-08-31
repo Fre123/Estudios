@@ -18,7 +18,7 @@ class MateriaSearch extends Materia
     public function rules()
     {
         return [
-            [['CODIGO_MATERIA', 'CODIGO', 'DESCRIPCION'], 'safe'],
+            [['CODIGO_MATERIA', 'DESCRIPCION'], 'safe'],
         ];
     }
 
@@ -58,7 +58,6 @@ class MateriaSearch extends Materia
 
         // grid filtering conditions
         $query->andFilterWhere(['like', 'CODIGO_MATERIA', $this->CODIGO_MATERIA])
-            ->andFilterWhere(['like', 'CODIGO', $this->CODIGO])
             ->andFilterWhere(['like', 'DESCRIPCION', $this->DESCRIPCION]);
 
         return $dataProvider;
