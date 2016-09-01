@@ -8,7 +8,7 @@ use backend\models\MateriaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\web\ForbiddenHttpException;
 /**
  * MateriaController implements the CRUD actions for Materia model.
  */
