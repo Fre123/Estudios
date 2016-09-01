@@ -51,9 +51,14 @@ class MateriaController extends Controller
      */
     public function actionView($id)
     {
+
+        if (Yii::$app->user->can('crear')){
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+        }else{
+        throw new ForbiddenHttpException;
+        }
     }
 
     /**
@@ -65,6 +70,8 @@ class MateriaController extends Controller
     {
         $model = new Materia();
 
+        if (Yii::$app->user->can('crear')){
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->CODIGO_MATERIA]);
         } else {
@@ -72,6 +79,9 @@ class MateriaController extends Controller
                 'model' => $model,
             ]);
         }
+    }else{
+        throw new ForbiddenHttpException;
+    }
     }
 
     /**
